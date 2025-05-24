@@ -8,18 +8,20 @@ import thesis.signal.Bus;
 import thesis.signal.ConstantSignal;
 import thesis.signal.Signal;
 
-import java.math.BigInteger;
 import java.util.List;
-import java.util.Random;
 
 public class Main {
     public static void main() {
-        Random r = new Random();
+        /*Random r = new Random();
         List<Boolean> a = padList(IntToBinaryList.convert(new BigInteger(200, r)), 200);
         List<Boolean> b = padList(IntToBinaryList.convert(new BigInteger(200, r)), 200);
 
         System.out.println("Grado 100");
         System.out.println();
+         */
+
+        List<Boolean> a = List.of(true, false, true);
+        List<Boolean> b = List.of(true, false, true);
 
         for (MultiplicationStrategy strategy: MultiplicationStrategy.values()) {
             System.out.println("--- " + strategy + " ---");
