@@ -21,6 +21,12 @@ public enum MultiplicationStrategy {
         public @NotNull Circuit getCircuit(int bits) {
             return new RefinedKaratsuba(bits);
         }
+    },
+    TWO_LEVEL_SEVEN_WAY {
+        @Override
+        public @NotNull Circuit getCircuit(int bits) {
+            return new TwoLevelSevenWay(bits);
+        }
     };
 
     public abstract @NotNull Circuit getCircuit(int bits);

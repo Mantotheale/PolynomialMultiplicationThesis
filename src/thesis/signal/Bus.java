@@ -40,6 +40,10 @@ public class Bus implements Iterable<Signal> {
         return new Bus(Stream.concat(this.stream(), other.stream()));
     }
 
+    public @NotNull Bus concat(@NotNull Signal other) {
+        return new Bus(Stream.concat(this.stream(), Stream.of(other)));
+    }
+
     @Override
     public @NotNull Iterator<Signal> iterator() {
         return signals.iterator();

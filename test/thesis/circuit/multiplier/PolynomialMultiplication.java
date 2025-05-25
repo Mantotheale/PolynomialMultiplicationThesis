@@ -45,6 +45,38 @@ public class PolynomialMultiplication {
         checkOutput(multiplier, List.of(true, false, false, false, false, false, true, false, false, false, true, false, true));
     }
 
+    public static void eightBitMultiplicationTest(@NotNull MultiplicationStrategy strategy) {
+        Circuit multiplier = strategy.getCircuit(8);
+        fixInput(multiplier,
+                List.of(false, true, false, true, false, true, true, true),
+                List.of(true, false, false, false, false, false, true, true));
+        checkOutput(multiplier,
+                List.of(false, true, false, true, false, true, true, false, true, true, true, true, false, false, true));
+
+        fixInput(multiplier,
+                List.of(true, false, false, true, false, false, false, true),
+                List.of(true, false, false, false, true, true, false, true));
+        checkOutput(multiplier,
+                List.of(true, false, false, true, true, true, false, true, true, false, true, true, true, false, true));
+    }
+
+    public static void sixteenBitMultiplicationTest(@NotNull MultiplicationStrategy strategy) {
+        Circuit multiplier = strategy.getCircuit(16);
+        fixInput(multiplier,
+                List.of(false, true, true, true, true, false, true, true,
+                        true, true, true, true, false, false, true, true),
+                List.of(true, true, true, true, true, false, false, false,
+                        false, true, false, false, true, true, false, true));
+        checkOutput(multiplier,
+                List.of(false, true, false, true, false, false, false, false,
+                        false, false, false, false, true, true, true, false,
+                        false, true, true, true, true, true, true, false,
+                        true, true, false, false, true, true, true
+                ));
+    }
+
+
+
     private static void fixInput(@NotNull Circuit multiplier, @NotNull List<Boolean> a, @NotNull List<Boolean> b) {
         Bus busA = new Bus(boolToSignal(a));
         Bus busB = new Bus(boolToSignal(b));

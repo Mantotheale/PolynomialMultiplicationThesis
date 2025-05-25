@@ -12,7 +12,24 @@ import java.util.List;
 
 public class Main {
     public static void main() {
-        /*Random r = new Random();
+        List<Boolean> aList = List.of(false, true, false, true, false, true, true, true);
+        List<Boolean> bList = List.of(true, false, false, false, false, false, true, true);
+        List<Boolean> expList = List.of(false, true, false, true, false, true, true, false, true, true, true, true, false, false, true);
+
+        Polynomial a = new Polynomial(aList);
+        Polynomial b = new Polynomial(bList);
+        Polynomial res = a.mul(b);
+        Polynomial exp = new Polynomial(expList);
+
+        System.out.println("Uguali? " + res.equals(exp));
+
+
+        /*for (int i = 1; i < 32; i++) {
+            System.out.println("--- " + i + " bits ---");
+            Circuit _ = new TwoLevelSevenWay(i);
+            System.out.println("--- ---");
+        }*/
+        /*
         List<Boolean> a = padList(IntToBinaryList.convert(new BigInteger(200, r)), 200);
         List<Boolean> b = padList(IntToBinaryList.convert(new BigInteger(200, r)), 200);
 
@@ -20,14 +37,25 @@ public class Main {
         System.out.println();
          */
 
-        List<Boolean> a = List.of(true, false, true);
+        /*
+        Random r = new Random();
+        List<Boolean> a = padList(IntToBinaryList.convert(new BigInteger(1000, r)), 1000);;
+        List<Boolean> b = padList(IntToBinaryList.convert(new BigInteger(1000, r)), 1000);
+
+        for (MultiplicationStrategy strategy: MultiplicationStrategy.values()) {
+            System.out.println("--- " + strategy + " ---");
+            multiply(strategy, a, b);
+            System.out.println("--- ---");
+        }*/
+
+        /*List<Boolean> a = List.of(true, false, true);
         List<Boolean> b = List.of(true, false, true);
 
         for (MultiplicationStrategy strategy: MultiplicationStrategy.values()) {
             System.out.println("--- " + strategy + " ---");
             multiply(strategy, a, b);
             System.out.println("--- ---");
-        }
+        }*/
     }
 
     private static @NotNull List<@NotNull Boolean> padList(@NotNull List<@NotNull Boolean> l, int len) {
@@ -46,19 +74,19 @@ public class Main {
         fixInput(multiplier, a, b);
 
         long start = System.currentTimeMillis();
-
-        Polynomial res = new Polynomial(evaluateCircuit(multiplier));
+        evaluateCircuit(multiplier);
+        /*Polynomial res = new Polynomial(evaluateCircuit(multiplier));
         Polynomial exp = expectedResult(a, b);
         if (!res.equals(exp)) {
             throw new RuntimeException("ERRORE circuito");
-        }
+        }*/
 
         long middle = System.currentTimeMillis();
-
-        res = new Polynomial(evaluateCircuit(multiplier));
+        evaluateCircuit(multiplier);
+        /*res = new Polynomial(evaluateCircuit(multiplier));
         if (!res.equals(exp)) {
             throw new RuntimeException("ERRORE circuito");
-        }
+        }*/
 
         long end = System.currentTimeMillis();
 
